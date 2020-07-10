@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player Head
+  - Player Body
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 3952192189
+    locked: 0
+  - name: Tiles
+    uniqueID: 25173749
+    locked: 0
+  - name: Objects
+    uniqueID: 47383331
+    locked: 0
+  - name: Player
+    uniqueID: 2382706743
+    locked: 0
+  - name: FG
+    uniqueID: 2777724549
+    locked: 0
+  - name: Menu
+    uniqueID: 3891213755
     locked: 0
