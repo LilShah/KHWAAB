@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     private float direction;
-    [SerializeField] private float jumpHeight = 50f;
+    private float jumpHeight = 300f;
     private float moveSpeed = 10f;
     private bool moveLeft = false;
     private bool moveRight = false;
