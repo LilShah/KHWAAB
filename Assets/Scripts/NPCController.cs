@@ -5,6 +5,10 @@ using UnityEngine;
 public class NPCController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource footstep1;
+    [SerializeField] private AudioSource footstep1echo;
+    [SerializeField] private AudioSource footstep2;
+    [SerializeField] private AudioSource footstep2echo;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject eye;
     private float moveSpeed = 1f;
@@ -80,6 +84,7 @@ public class NPCController : MonoBehaviour
         if (other.tag == "Player Cone")
         {
             eye.SetActive(false);
+            footstep1.Play();
             moveSpeed = 1f;
             Debug.Log(other.tag);
             if (moveRight)

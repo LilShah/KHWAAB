@@ -604,6 +604,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCs:
   - {fileID: 8245040703646699453, guid: b8897633ee6a29c4e888e29d4077026a, type: 3}
+  - {fileID: 4229528612235782495, guid: b96e67a34499ced488a00b2abbc71acd, type: 3}
+  - {fileID: 2830641093029591174, guid: ff590214372dc014eace3643270fd127, type: 3}
+  - {fileID: 5116665686754636530, guid: 71bdb0b6629175845a067a2bfdac719e, type: 3}
+  - {fileID: 2283126864191245605, guid: e8846a3fd611af14b8311cab00c67cde, type: 3}
   nextSpawn: 5
   spawnDirection: -1
 --- !u!4 &702378999
@@ -735,6 +739,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCs:
   - {fileID: 8245040703646699453, guid: b8897633ee6a29c4e888e29d4077026a, type: 3}
+  - {fileID: 4229528612235782495, guid: b96e67a34499ced488a00b2abbc71acd, type: 3}
+  - {fileID: 2830641093029591174, guid: ff590214372dc014eace3643270fd127, type: 3}
+  - {fileID: 5116665686754636530, guid: 71bdb0b6629175845a067a2bfdac719e, type: 3}
+  - {fileID: 2283126864191245605, guid: e8846a3fd611af14b8311cab00c67cde, type: 3}
   nextSpawn: 0
   spawnDirection: 1
 --- !u!4 &781097179
