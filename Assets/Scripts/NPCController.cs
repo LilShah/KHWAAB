@@ -24,13 +24,19 @@ public class NPCController : MonoBehaviour
             main hub
             text/story
         */
+        int x = Random.Range(1, 3);
+        if (x == 1)
+        {
+            footstep1.Play();
+        }
+        else
+        {
+            footstep2.Play();
+        }
     }
 
     private void Update()
-    {
-
-    }
-
+    { }
     void FixedUpdate()
     {
         if (moveRight)
@@ -84,7 +90,6 @@ public class NPCController : MonoBehaviour
         if (other.tag == "Player Cone")
         {
             eye.SetActive(false);
-            footstep1.Play();
             moveSpeed = 1f;
             Debug.Log(other.tag);
             if (moveRight)
@@ -106,6 +111,7 @@ public class NPCController : MonoBehaviour
         {
             eye.SetActive(true);
             moveSpeed = 1.2f;
+
             if (moveRight)
             {
                 moveLeft = true;

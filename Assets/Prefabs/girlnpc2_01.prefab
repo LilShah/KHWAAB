@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dd3bf6968a068234287ebbe83a45a3d5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -249,10 +249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2830641093029591225}
-  footstep1: {fileID: 0}
-  footstep1echo: {fileID: 0}
-  footstep2: {fileID: 0}
-  footstep2echo: {fileID: 0}
+  footstep1: {fileID: 699560470854020630}
+  footstep1echo: {fileID: 917454152193358337}
+  footstep2: {fileID: 809525467171312829}
+  footstep2echo: {fileID: 7186501448283984156}
   player: {fileID: 3797430473344684386, guid: 6d147dae904015640b1f2abfea035eb5, type: 3}
   eye: {fileID: 2830641093854688937}
 --- !u!70 &2830641093029591229
@@ -416,7 +416,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 397398b894c63e64d83d0088d424583c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -543,7 +543,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7fac2338c083dc44b8775685df14e392, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -670,7 +670,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e6cbcfb5473354847ac8c9c6c250774f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
