@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     {
         //TODO: cone width based on level. Smaller in lower level, bigger in higher,
         //      disable cone and darkness if level>8
-
     }
 
     private void checkJumpAnimation()
@@ -101,6 +100,7 @@ public class PlayerController : MonoBehaviour
     }
     private void success()
     {
+        //TODO: Scene transition to bedroom.
         Debug.Log("Player has won. Levels: " + Globals.level);
         if (Globals.level == Globals.maxLevel)
             winGame();
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     }
     public void takeDamage()
     {
-        //TODO: implement 'wakeup' state
+        //TODO: implement 'wakeup' state. Scene transition to bedroom. 
         Debug.Log("Player has been touched. Levels: " + Globals.level);
         if (Globals.level == Globals.minLevel)
             loseGame();
