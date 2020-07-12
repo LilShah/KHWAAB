@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Level
   - door
+  - bed
   layers:
   - Default
   - TransparentFX

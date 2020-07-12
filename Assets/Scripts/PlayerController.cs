@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject playerCone;
     [SerializeField] private GameObject darkness;
+    private Scene currentScene;
+    private string sceneName;
     private float direction;
     private float jumpHeight = 300f;
     private float moveSpeed = 10f;
@@ -17,11 +20,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
     {
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
         float move = Input.GetAxis("Horizontal");
         if (move > 0)
             moveRight = true;
@@ -40,18 +44,22 @@ public class PlayerController : MonoBehaviour
 
         if (moveRight)
         {
-            if (Globals.level > 8)
+            if (sceneName == "Room")
+                transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            else if (Globals.level > 8)
                 transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
             animator.SetBool("moving", true);
-            transform.localScale = new Vector3(10, 10, 1);
+            transform.localScale = new Vector3(10, 13, 1);
             moveRight = false;
         }
         if (moveLeft)
         {
-            if (Globals.level > 8)
+            if (sceneName == "Room")
+                transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
+            else if (Globals.level > 8)
                 transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
             animator.SetBool("moving", true);
-            transform.localScale = new Vector3(-10, 10, 1);
+            transform.localScale = new Vector3(-10, 13, 1);
             moveLeft = false;
         }
         //TODO: top check and bottom check for jump
