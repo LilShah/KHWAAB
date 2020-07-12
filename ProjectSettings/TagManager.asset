@@ -50,14 +50,14 @@ TagManager:
   - name: Objects
     uniqueID: 47383331
     locked: 0
+  - name: Tiles
+    uniqueID: 25173749
+    locked: 0
   - name: NPC
     uniqueID: 2971602729
     locked: 0
   - name: Darkness
     uniqueID: 1964995443
-    locked: 0
-  - name: Tiles
-    uniqueID: 25173749
     locked: 0
   - name: Player
     uniqueID: 2382706743
