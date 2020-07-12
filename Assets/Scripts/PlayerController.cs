@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
     private float direction;
     private float jumpHeight = 300f;
     private float moveSpeed = 10f;
     private bool moveLeft = false;
     private bool moveRight = false;
-    bool jump = false;
+    private bool jump = false;
     void Start()
     {
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float move = Input.GetAxis("Horizontal");
+        animator.SetFloat("speed", Mathf.Abs(move));
         if (move > 0)
             moveRight = true;
         else if (move < 0)
@@ -31,14 +33,17 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (moveRight)
         {
             transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            GetComponent<SpriteRenderer>().flipX = false;
             moveRight = false;
         }
         if (moveLeft)
         {
             transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
+            GetComponent<SpriteRenderer>().flipX = true;
             moveLeft = false;
         }
         //TODO: top check and bottom check for jump
@@ -47,5 +52,25 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpHeight, 0));
             jump = false;
         }
+        checkJumpAnimation();
+    }
+    private void checkJumpAnimation()
+    {
+        if (rb.velocity.y > 0.1)
+        {
+            animator.SetBool("jumping", true);
+            animator.SetBool("falling", false);
+        }
+        if (rb.velocity.y < 0.1)
+        {
+            animator.SetBool("jumping", false);
+            animator.SetBool("falling", true);
+        }
+        if (rb.velocity.y == 0)
+        {
+            animator.SetBool("jumping", false);
+            animator.SetBool("falling", false);
+        }
+
     }
 }
