@@ -6,6 +6,7 @@ public class NPCController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject eye;
     private float moveSpeed = 1f;
     private bool moveLeft = false;
     private bool moveRight = false;
@@ -16,8 +17,6 @@ public class NPCController : MonoBehaviour
     {
         /*
         some TODOS:
-            enemy spawn code
-            view cone barra kro
             main hub
             text/story
         */
@@ -42,26 +41,28 @@ public class NPCController : MonoBehaviour
             //animator.SetBool("moving", true);
             transform.localScale = new Vector3(-15, 15, 1);
         }
-        if (!playerChecked)
-        {
-            Debug.Log("Checking player location: " + playerChecked);
-            RaycastHit2D checkRight = Physics2D.Raycast(transform.position, Vector2.right);
-            RaycastHit2D checkLeft = Physics2D.Raycast(transform.position, Vector2.left);
-            Debug.Log(checkRight.collider.tag);
-            Debug.Log(checkLeft.collider.tag);
-            if (checkRight.collider.tag != "Level")
-            {
-                Debug.Log("Player on the right!");
-                moveRight = true;
-                playerChecked = true;
-            }
-            else if (checkLeft.collider.tag != "Level")
-            {
-                Debug.Log("Player on the left!");
-                moveLeft = true;
-                playerChecked = true;
-            }
-        }
+        /*
+          if (!playerChecked)
+         {
+             Debug.Log("Checking player location: " + playerChecked);
+             RaycastHit2D checkRight = Physics2D.Raycast(transform.position, Vector2.right);
+             RaycastHit2D checkLeft = Physics2D.Raycast(transform.position, Vector2.left);
+             Debug.Log(checkRight.collider.tag);
+             Debug.Log(checkLeft.collider.tag);
+             if (checkRight.collider.tag != "Level")
+             {
+                 Debug.Log("Player on the right!");
+                 moveRight = true;
+                 playerChecked = true;
+             }
+             else if (checkLeft.collider.tag != "Level")
+             {
+                 Debug.Log("Player on the left!");
+                 moveLeft = true;
+                 playerChecked = true;
+             }
+         }
+          */
 
 
     }
@@ -78,6 +79,8 @@ public class NPCController : MonoBehaviour
     {
         if (other.tag == "Player Cone")
         {
+            eye.SetActive(false);
+            moveSpeed = 1f;
             Debug.Log(other.tag);
             if (moveRight)
             {
@@ -96,6 +99,8 @@ public class NPCController : MonoBehaviour
         Debug.Log(other.tag);
         if (other.tag == "Player Cone")
         {
+            eye.SetActive(true);
+            moveSpeed = 1.2f;
             if (moveRight)
             {
                 moveLeft = true;
@@ -108,5 +113,19 @@ public class NPCController : MonoBehaviour
             }
         }
     }
+    public void setDirection(int dir)
+    {
+        if (dir == -1)
+        {
+            moveLeft = true;
+            moveRight = false;
+        }
+        else if (dir == 1)
+        {
+            moveLeft = false;
+            moveRight = true;
+        }
 
+    }
+    public float getSpeed() { return moveSpeed; }
 }
