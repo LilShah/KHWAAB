@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     private float levelLength = 0;
     private float levelTime = 30;
 
-
     void Start()
     {
         levelLength = Time.time + levelTime;
@@ -32,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.time > levelLength)
+        {
+            success();
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             fPress = true;
@@ -122,6 +125,7 @@ public class PlayerController : MonoBehaviour
     private void goToDream()
     {
         Debug.Log("Sleep");
+        SceneManager.LoadScene(1);
     }
     private void showSleepText()
     {
@@ -177,7 +181,10 @@ public class PlayerController : MonoBehaviour
         if (Globals.level == Globals.maxLevel)
             winGame();
         else
+        {
+            SceneManager.LoadScene(2);
             Globals.level++;
+        }
     }
     public void takeDamage()
     {
@@ -186,7 +193,10 @@ public class PlayerController : MonoBehaviour
         if (Globals.level == Globals.minLevel)
             loseGame();
         else
+        {
+            SceneManager.LoadScene(2);
             Globals.level--;
+        }
     }
     public void increaseConeLength(float width)
     {

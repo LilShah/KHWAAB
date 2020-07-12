@@ -109,7 +109,7 @@ public class NPCController : MonoBehaviour
         if (other.tag == "Player Cone")
         {
             eye.SetActive(true);
-            moveSpeed = 1.2f;
+            moveSpeed = 1.4f;
             if (moveRight)
             {
                 moveLeft = true;
