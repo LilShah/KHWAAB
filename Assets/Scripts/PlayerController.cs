@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject playerCone;
+    [SerializeField] private GameObject darkness;
     private float direction;
     private float jumpHeight = 300f;
     private float moveSpeed = 10f;
@@ -20,11 +22,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float move = Input.GetAxis("Horizontal");
-        animator.SetFloat("speed", Mathf.Abs(move));
         if (move > 0)
             moveRight = true;
         else if (move < 0)
             moveLeft = true;
+        else
+            animator.SetBool("moving", false);
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -36,14 +39,18 @@ public class PlayerController : MonoBehaviour
 
         if (moveRight)
         {
-            transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
-            GetComponent<SpriteRenderer>().flipX = false;
+            if (Globals.level > 8)
+                transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            animator.SetBool("moving", true);
+            transform.localScale = new Vector3(10, 10, 1);
             moveRight = false;
         }
         if (moveLeft)
         {
-            transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
-            GetComponent<SpriteRenderer>().flipX = true;
+            if (Globals.level > 8)
+                transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
+            animator.SetBool("moving", true);
+            transform.localScale = new Vector3(-10, 10, 1);
             moveLeft = false;
         }
         //TODO: top check and bottom check for jump
@@ -53,7 +60,14 @@ public class PlayerController : MonoBehaviour
             jump = false;
         }
         checkJumpAnimation();
+        setConeWidth();
     }
+    private void setConeWidth()
+    {
+        //TODO: cone width based on level. Smaller in lower level, bigger in higher,
+        //      disable cone and darkness if level>8
+    }
+
     private void checkJumpAnimation()
     {
         if (rb.velocity.y > 0.1)
@@ -71,6 +85,31 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("jumping", false);
             animator.SetBool("falling", false);
         }
+
+    }
+    private void winGame()
+    {
+        //TODO: implementation
+    }
+    private void loseGame()
+    {
+        //TODO: implementation
+    }
+    private void success()
+    {
+        if (Globals.level == Globals.maxLevel)
+            winGame();
+        else
+            Globals.level++;
+    }
+    public void takeDamage()
+    {
+        //TODO: implement 'wakeup' state
+        if (Globals.level == Globals.minLevel)
+            loseGame();
+        else
+            Globals.level--;
+
 
     }
 }

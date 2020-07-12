@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Player Head
-  - Player Body
+  - Player Cone
+  - NPC
+  - Level
   layers:
   - Default
   - TransparentFX
@@ -46,11 +47,17 @@ TagManager:
   - name: BG
     uniqueID: 3952192189
     locked: 0
-  - name: Tiles
-    uniqueID: 25173749
-    locked: 0
   - name: Objects
     uniqueID: 47383331
+    locked: 0
+  - name: NPC
+    uniqueID: 2971602729
+    locked: 0
+  - name: Darkness
+    uniqueID: 1964995443
+    locked: 0
+  - name: Tiles
+    uniqueID: 25173749
     locked: 0
   - name: Player
     uniqueID: 2382706743
