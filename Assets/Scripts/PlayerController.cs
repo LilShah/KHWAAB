@@ -21,10 +21,13 @@ public class PlayerController : MonoBehaviour
     private bool jump = false;
     private bool nearBed = false;
     private bool fPress = false;
+    private float levelLength = 0;
+    private float levelTime = 30;
 
 
     void Start()
     {
+        levelLength = Time.time + levelTime;
     }
 
     void Update()
