@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Sounds/Effects.meta
+guid: 5a9c854ebec153745a0cc44d73767c75
+=======
+guid: 864cf7c4edb981f40898628b3afc8e5b
+>>>>>>> cacea8c42e231f0a68dd9a7dfb002f1a017e2d16:Assets/NPC/NPC5/Animations.meta
+=======
 guid: ea6aa5ba2b5f59b4ebb0ae091d2a5f5a
+>>>>>>> cacea8c42e231f0a68dd9a7dfb002f1a017e2d16
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
