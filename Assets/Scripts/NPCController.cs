@@ -20,8 +20,7 @@ public class NPCController : MonoBehaviour
     void Start()
     {
         /*
-        some TODOS:
-            main hub
+        
             text/story
         */
         int x = Random.Range(1, 3);
@@ -111,7 +110,6 @@ public class NPCController : MonoBehaviour
         {
             eye.SetActive(true);
             moveSpeed = 1.2f;
-
             if (moveRight)
             {
                 moveLeft = true;
