@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool moveLeft = false;
     private bool moveRight = false;
     private bool jump = false;
+
     void Start()
     {
 
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         //TODO: cone width based on level. Smaller in lower level, bigger in higher,
         //      disable cone and darkness if level>8
+
     }
 
     private void checkJumpAnimation()
@@ -89,14 +91,17 @@ public class PlayerController : MonoBehaviour
     }
     private void winGame()
     {
+        Debug.Log("WIN! Time to meet our parents. Wait.....");
         //TODO: implementation
     }
     private void loseGame()
     {
+        Debug.Log("GG die");
         //TODO: implementation
     }
     private void success()
     {
+        Debug.Log("Player has won. Levels: " + Globals.level);
         if (Globals.level == Globals.maxLevel)
             winGame();
         else
@@ -105,11 +110,20 @@ public class PlayerController : MonoBehaviour
     public void takeDamage()
     {
         //TODO: implement 'wakeup' state
+        Debug.Log("Player has been touched. Levels: " + Globals.level);
         if (Globals.level == Globals.minLevel)
             loseGame();
         else
             Globals.level--;
-
-
+    }
+    public void increaseConeLength(float width)
+    {
+        playerCone.transform.localScale = new Vector3(playerCone.transform.localScale.x, playerCone.transform.localScale.y + width, 1);
+        playerCone.transform.position = new Vector3(playerCone.transform.position.x + (width / 2), playerCone.transform.position.y, 1);
+    }
+    public void decreaseConeLength(float width)
+    {
+        playerCone.transform.localScale = new Vector3(playerCone.transform.localScale.x, playerCone.transform.localScale.y - width, 1);
+        playerCone.transform.position = new Vector3(playerCone.transform.position.x - (width / 2), playerCone.transform.position.y, 1);
     }
 }
