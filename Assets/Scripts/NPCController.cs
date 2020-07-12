@@ -14,7 +14,13 @@ public class NPCController : MonoBehaviour
 
     void Start()
     {
-
+        /*
+        some TODOS:
+            enemy spawn code
+            view cone barra kro
+            main hub
+            text/story
+        */
     }
 
     private void Update()
