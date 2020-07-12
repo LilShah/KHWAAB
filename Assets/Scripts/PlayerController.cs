@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject playerCone;
     [SerializeField] private GameObject darkness;
+    [SerializeField] private GameObject sleepText;
+
     private Scene currentScene;
     private string sceneName;
     private float direction;
@@ -17,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private bool moveLeft = false;
     private bool moveRight = false;
     private bool jump = false;
+    private bool nearBed = false;
+    private bool fPress = false;
+
 
     void Start()
     {
@@ -24,6 +29,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            fPress = true;
+        }
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         float move = Input.GetAxis("Horizontal");
@@ -45,9 +54,18 @@ public class PlayerController : MonoBehaviour
         if (moveRight)
         {
             if (sceneName == "Room")
+            {
+                playerCone.SetActive(false);
                 transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
-            else if (Globals.level > 8)
+            }
+            else
+            {
+                playerCone.SetActive(true);
+            }
+            if (Globals.level > 8)
+            {
                 transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            }
             animator.SetBool("moving", true);
             transform.localScale = new Vector3(10, 13, 1);
             moveRight = false;
@@ -55,21 +73,60 @@ public class PlayerController : MonoBehaviour
         if (moveLeft)
         {
             if (sceneName == "Room")
+            {
+                playerCone.SetActive(false);
                 transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
-            else if (Globals.level > 8)
+            }
+            else
+            {
+                playerCone.SetActive(true);
+            }
+            if (Globals.level > 8)
                 transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
             animator.SetBool("moving", true);
             transform.localScale = new Vector3(-10, 13, 1);
             moveLeft = false;
         }
-        //TODO: top check and bottom check for jump
         if (jump)
         {
             rb.AddForce(new Vector3(0, jumpHeight, 0));
             jump = false;
         }
+        if (fPress && nearBed)
+        {
+            fPress = false;
+            goToDream();
+        }
         checkJumpAnimation();
         setConeWidth();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "bed")
+        {
+            showSleepText();
+            nearBed = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "bed")
+        {
+            hideSleepText();
+            nearBed = false;
+        }
+    }
+    private void goToDream()
+    {
+        Debug.Log("Sleep");
+    }
+    private void showSleepText()
+    {
+        sleepText.SetActive(true);
+    }
+    private void hideSleepText()
+    {
+        sleepText.SetActive(false);
     }
     private void setConeWidth()
     {
