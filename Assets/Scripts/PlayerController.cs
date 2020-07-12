@@ -161,12 +161,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("WIN! Time to meet our parents. Wait.....");
         //TODO: implementation
         //TODO: scene transition to game win text and exit.
+        SceneManager.LoadScene(3);
     }
     private void loseGame()
     {
         Debug.Log("GG die");
         //TODO: scene transition to game lose text and exit.
         //TODO: implementation
+        SceneManager.LoadScene(4);
     }
     private void success()
     {
